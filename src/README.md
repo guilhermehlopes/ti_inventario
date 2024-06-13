@@ -40,7 +40,14 @@ ti_inventario/
 
 2. Instale as dependências:
     ```sh
-    npm install
+npm install express
+npm install swagger-ui-express 
+npm install body-parser 
+npm install mongodb
+npm install cors 
+npm install dotenv 
+npm install nodemon --save-dev 
+npm install
     ```
 
 3. Configure a conexão com o MongoDB (se necessário, altere a URL de conexão no arquivo `src/db.js`).
