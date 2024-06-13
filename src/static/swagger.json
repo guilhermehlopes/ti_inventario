@@ -1,0 +1,621 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Inventário de Ativos de TI API",
+    "version": "1.0.0",
+    "description": "API para gerenciamento de inventário de ativos de TI."
+  },
+  "paths": {
+    "/funcionario": {
+      "post": {
+        "summary": "Insere um novo funcionário.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cpf": {
+                  "type": "string"
+                },
+                "nome": {
+                  "type": "string"
+                },
+                "cargo": {
+                  "type": "string"
+                }
+              },
+              "required": ["cpf", "nome", "cargo"]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Funcionário inserido com sucesso."
+          },
+          "400": {
+            "description": "Erro nos dados enviados."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}": {
+      "delete": {
+        "summary": "Exclui um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualiza o nome de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionarios": {
+      "get": {
+        "summary": "Lista todos os funcionários.",
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/inventario": {
+      "get": {
+        "summary": "Consulta o inventário completo de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/ativo/notebook": {
+      "put": {
+        "summary": "Atualiza informações do ativo notebook de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelo": {
+                  "type": "string"
+                },
+                "marca": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Limpa as informações do ativo notebook de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/ativo/monitor1": {
+      "put": {
+        "summary": "Atualiza informações do ativo monitor1 de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelo": {
+                  "type": "string"
+                },
+                "marca": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Limpa as informações do ativo monitor1 de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/ativo/monitor2": {
+      "put": {
+        "summary": "Atualiza informações do ativo monitor2 de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelo": {
+                  "type": "string"
+                },
+                "marca": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Limpa as informações do ativo monitor2 de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/ativo/teclado": {
+      "put": {
+        "summary": "Atualiza informações do ativo teclado de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelo": {
+                  "type": "string"
+                },
+                "marca": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Limpa as informações do ativo teclado de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/ativo/mouse": {
+      "put": {
+        "summary": "Atualiza informações do ativo mouse de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelo": {
+                  "type": "string"
+                },
+                "marca": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Limpa as informações do ativo mouse de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+        "/funcionario/{cpf}/ativo/nobreak": {
+      "put": {
+        "summary": "Atualiza informações do ativo nobreak de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelo": {
+                  "type": "string"
+                },
+                "marca": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Limpa as informações do ativo nobreak de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/ativo/desktop": {
+      "put": {
+        "summary": "Atualiza informações do ativo desktop de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelo": {
+                  "type": "string"
+                },
+                "marca": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Limpa as informações do ativo desktop de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/ativo/headset": {
+      "put": {
+        "summary": "Atualiza informações do ativo headset de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelo": {
+                  "type": "string"
+                },
+                "marca": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Limpa as informações do ativo headset de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/ativo/celular": {
+      "put": {
+        "summary": "Atualiza informações do ativo celular de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "modelo": {
+                  "type": "string"
+                },
+                "marca": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Limpa as informações do ativo celular de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    },
+    "/funcionario/{cpf}/ativo/acessorios": {
+      "put": {
+        "summary": "Atualiza informações do ativo acessórios de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "descricao": {
+                  "type": "string"
+                },
+                "quantidade": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+    },
+    "delete": {
+        "summary": "Limpa as informações do ativo acessorios de um funcionário pelo CPF.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso."
+          }
+        }
+      }
+    }
+  }
+}
