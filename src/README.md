@@ -1,5 +1,4 @@
 # API de Inventário de Ativos de TI
-
 ## Descrição
 Esta API permite gerenciar o inventário de ativos de TI de uma empresa, incluindo a gestão de funcionários e seus respectivos ativos.
 
@@ -22,7 +21,7 @@ ti_inventario/
 │   |── app.js
 │   └── db.js
 ├── package.json
-└── README.md
+└── package-lock.json
 
 
 ## Instalação
@@ -40,7 +39,14 @@ ti_inventario/
 
 2. Instale as dependências:
     ```sh
-    npm install
+npm install express
+npm install swagger-ui-express 
+npm install body-parser 
+npm install mongodb
+npm install cors 
+npm install dotenv 
+npm install nodemon --save-dev 
+npm install
     ```
 
 3. Configure a conexão com o MongoDB (se necessário, altere a URL de conexão no arquivo `src/db.js`).
@@ -62,11 +68,21 @@ ti_inventario/
 - **PUT /api/funcionario/:cpf**: Atualiza o nome do funcionário.
 
 ### Ativos
-- **PUT /api/funcionario/:cpf/ativo/:tipoAtivo**: Atualiza as informações de um ativo.
-- **DELETE /api/funcionario/:cpf/ativo/:tipoAtivo**: Limpa as informações de um ativo.
+- **POST /funcionario/:cpf/ativo/(notebook;monitor1;monitor2;teclado;mouse;nobreak;desktop;headset;celular;acessorios)**: Adiciona ativos a um funcionario (diversos tipos)
+- **DELETE /funcionario/:cpf/ativo/(notebook;monitor1;monitor2;teclado;mouse;nobreak;desktop;headset;celular;acessorios)**: Deleta ativos a um funcionario (diversos tipos)
+
 
 ## Estrutura
 - Um funcionário só pode ser excluído se não houver nenhum ativo configurado para ele.
 - A quantidade de ativos que um funcionário pode ter não deve ser maior que a especificada na planilha fornecida.
 
+
+## Comentarios
+Professor, tentei muito mas realmente não consegui fazer ele reconhecer a rota.
+
+![](./result.png)
+
+![](./erro.png)
+
+![](./test.png)
 

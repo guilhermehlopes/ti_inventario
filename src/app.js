@@ -3,39 +3,50 @@ const swaggerUi = require('swagger-ui-express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
-const routes = require('./routes/routes');
-const db = require('./db');
 const cors = require('cors');
 require('dotenv').config();
 
-const swaggerPath = path.resolve(__dirname, './static/swagger.json');
-console.log('Swagger Path:', swaggerPath);
-const swaggerDocument = require(swaggerPath);
+const swaggerDocument = require('./static/swagger.json');
+const routes = require('./routes/routes'); 
+const db = require('./db'); 
 
 const app = express();
-const porta = process.env.PORTA || 3001;
+const PORT = process.env.PORT || 5000;
 const uri_conexao = process.env.MONGODB_URI || 'mongodb://localhost:27017/ti-inventario';
 const nome_db = 'ti-inventario';
 
+// Middleware
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json()); 
+app.use('/api', routes);
 
+// Swagger setup
+const SWAGGER_URL = '/swagger';
+const API_URL = '/static/swagger.json';
+
+app.use(
+    SWAGGER_URL, 
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerDocument, {
+        swaggerOptions: {
+            appName: "IT Inventory"
+        }
+    })
+);
+
+// Conexão com o MongoDB e inicialização do servidor
 const { MongoClient } = require('mongodb');
 
-app.use(bodyParser.json());
-app.use('/api', routes);
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 MongoClient.connect(uri_conexao, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((client) => {
+    .then(client => {
         console.log('Conectado ao MongoDB');
-        const PORT = process.env.PORT || 5000;
+        const db = client.db(nome_db);
+        app.locals.db = db;
+
+        // Inicia o servidor após a conexão com o banco de dados
         app.listen(PORT, () => {
-            console.log(`Servidor rodando na porta ${PORT}`);
+            console.log(`Servidor rodando em http://127.0.0.1:${PORT}`);
         });
     })
-    .catch((error) => {
-        console.error('Erro ao conectar no MongoDB', error);
-    });
-
-
+    .catch(error => console.error(error));
