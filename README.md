@@ -78,11 +78,11 @@ ti_inventario/
 
 
 ## Comentarios
-Professor, tentei muito mas realmente não consegui fazer ele reconhecer a rota.
+Infelizmente esta com erro na rota e nao consegui ajustar :/
 
 ![](./result.png)
 
 ![](./erro.png)
 
-![](./test.png)
+![](./teste.png)
 
